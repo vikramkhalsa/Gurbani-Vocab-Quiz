@@ -1,0 +1,171 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Santhiya Quiz</title>
+
+    <script type="text/javascript">
+        function test() {
+            alert("test!");
+           
+        }
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+ 
+    <style >
+
+
+        .box{
+            margin:0px auto;
+            width:500px;
+        }
+        .question{
+            height:50px;
+            background-color:lightgray;
+            font-size:1.5em;
+        }
+
+        .answer{
+            height:25px;
+            
+            background-color:lightgray;
+        }
+
+        .aWord{
+            height:50px;
+            /*margin: 10px 15px 10px 5px;*/
+            padding-left:10px;
+            width:100%;
+            background-color:#acaca7;
+            font-size:1.5em;
+            float:left;
+        }
+         .qWord{
+            height:50px;
+            width:100%;
+            background-color:lightgray;
+            font-size:1.5em;
+            float:left;
+        }
+
+
+         .left{
+             float:left;
+             width:70%;
+         }
+         .right{
+             float:left;
+             width:30%;
+
+         }
+
+    </style>
+
+</head>
+<body>
+    <div class="box">
+        <!--<div class="question">
+            What does "nadar" mean?
+        </div>
+
+        <ol>
+            <li class="answer">Answer 1</li>
+            <li class="answer">Answer 1</li>
+            <li class="answer">Answer 1</li>
+            <li class="answer">Answer 1</li>
+
+
+        </ol>-->
+        Drag the appropriate meaning to its corresponding Gurmukhi word. 
+
+
+        <div class="left">
+            <div class="qWord">Sukh</div>
+            <div class="qWord">Dukh</div>
+
+        </div>
+        <div class="right">
+
+            <div class="aWord" answer="Dukh">
+                sadness
+            </div>
+            <div class="aWord" answer="Sukh">
+                Happiness
+            </div>
+           
+        </div>
+
+    </div>
+
+    <script>
+        var Ui;
+        $(".aWord").draggable({ snap: ".qWord" });
+        $(".qWord").droppable({
+            drop: function (ui, event) {
+                console.log($(event.helper).attr('answer'));
+                console.log($(this).html());
+                if (($(event.helper).attr('answer')==$(this).html())){
+                    $(this).css("background-color", "green");
+                }
+                else {
+                    $(this).css("background-color", "red");
+                }
+
+           
+            },
+            out: function (ui, event) {
+
+                $(this).css("background-color", "lightgray");
+
+            }
+        });
+
+
+        //var words= ["Deh","Kheh","Sang","Pun", "Paap"];
+        //var answers = ["Body", "Dust","With", "Good Deed", "Bad Deed"];
+        
+        //$(".answer").mouseover(function () {
+        //    $(this).css("background-color", "yellow");
+        //});
+        //$(".answer").mouseleave(function () {
+        //    $(this).css("background-color", "lightgray");
+        //});
+
+        //$(".answer").click(function () {
+        //    if ($(this).attr("correct") != null) {
+        //        alert("correct!");
+        //    }
+        //});
+        //var i;
+
+        //var oList = $('ol li');
+
+        //var ques = 2;
+        //$(".question").html("What does " + words[ques] + " mean?");
+        
+        //var temp = answers.slice(0);
+        //temp.splice(ques, 1);
+        //for (i = 0; i < 4; i++) {
+        //    var randomnumber = Math.floor(Math.random() * temp.length)
+        //    oList[i].innerHTML = temp.pop(randomnumber);
+        //}
+        //var randomnumber = Math.floor(Math.random() * 4)
+        //oList[randomnumber].innerHTML = answers[ques];
+        //oList[randomnumber].setAttribute("correct", "true");
+
+        ////  $(".question").
+
+        //var ol = document.createElement('ol');
+        //var li = document.createElement('li');
+        //var node = document.createTextNode("temp");
+        //li.appendChild(node);
+        //ol.appendChild(li);
+
+        //$(".question").appendChild(ol);
+
+    </script>
+
+</body>
+</html>
